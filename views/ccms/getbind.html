@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CCMS数据索引</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="panel panel-default">
+	<div class="panel-body">
+<table class="table table-hover">
+	<caption>数据索引</caption>
+	<thead>
+
+	</thead>
+	<tbody>
+	<tr>
+		<td>ID</td>
+		<td>{{.binddata}}</td>
+		<td>绑定数据</td>
+	</tr>
+	</tbody>
+		<tr>
+			<td>{{.bind.Id}}</td>
+			<td>{{.bind.Binduser}}</td>
+			<td>{{.bind.Binddata}}</td>
+		</tr>
+</table>
+	</div>
+</div>
+</body>
+</html>

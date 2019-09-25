@@ -1,0 +1,80 @@
+<html>
+<head>
+    <style>
+        .progress {
+            width: 600px;
+            height: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0px;
+            overflow: hidden;
+        }
+        /* 初始状态设置进度条宽度为0px */
+        .progress > div {
+            width: 0px;
+            height: 100%;
+            background-color: yellowgreen;
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+<body>
+<form id="fform" method="POST" method="/upload" enctype="multipart/form-data">
+    <input id="myfile" name="myfile" type="file" />
+    <input type="submit" value="保存"  />
+</form>
+<hr>
+<input type="file" id="upload-file" enctype="multipart/form-data">
+<div class="progress">
+    <div></div>
+</div>
+<button onclick="uploadFile()">上传</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="/static/js/jquery.cookie.min.js"></script>
+<script src="/static/js/Base64.js"></script>
+<script>
+    function uploadFile() {
+        //获取上传的文件
+        var xsrf, xsrflist;
+        xsrf = $.cookie("_xsrf");
+        xsrflist = xsrf.split("|");
+        _xsrf = Base64.decode(xsrflist[0]);
+        var uploadFile = $('#upload-file')[0].files[0];
+
+        var formdata = new FormData();
+
+        formdata.append('fileInfo', uploadFile);
+        formdata.append('_xsrf', _xsrf);
+        $.ajax({
+            url: '/upload',
+            type: 'post',
+            data : formdata,
+            processData: false,
+            contentType: false,
+            xhr: function() {
+                var xhr = new XMLHttpRequest();
+                //使用XMLHttpRequest.upload监听上传过程，注册progress事件，打印回调函数中的event事件
+                xhr.upload.addEventListener('progress', function (e) {
+                    //console.log(e);
+                    //loaded代表上传了多少
+                    //total代表总数为多少
+                    var progressRate = (e.loaded / e.total) * 100 + '%';
+                    console.log(progressRate);
+                    //通过设置进度条的宽度达到效果
+                    $('.progress > div').css('width', progressRate);
+                })
+
+                return xhr;
+            },
+            success: function (data,status) {
+                if (data.Code != 200){
+
+                }else{
+
+                }
+            }
+        })
+    }
+</script>
+</html>

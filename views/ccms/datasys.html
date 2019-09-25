@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/admin_ass/Style/skin.css" />
+</head>
+    <body>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <!-- 头部开始 -->
+            <tr>
+                <td width="17" valign="top" background="/static/admin_ass/Images/mail_left_bg.gif">
+                    <img src="/static/admin_ass/Images/left_top_right.gif" width="17" height="29" />
+                </td>
+                <td valign="top" background="/static/admin_ass/Images/content_bg.gif">
+                    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="/static/admin_ass/Images/content_bg.gif">
+                        <tr><td height="31"><div class="title">数据配置</div></td></tr>
+                    </table>
+                </td>
+                <td width="16" valign="top" background="/static/admin_ass/Images/mail_right_bg.gif"><img src="/static/admin_ass/Images/nav_right_bg.gif" width="16" height="29" /></td>
+            </tr>
+            <!-- 中间部分开始 -->
+            <tr>
+                <!--第一行左边框-->
+                <td valign="middle" background="/static/admin_ass/Images/mail_left_bg.gif">&nbsp;</td>
+                <!--第一行中间内容-->
+                <td valign="top" bgcolor="#F7F8F9">
+                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <!-- 空白行-->
+                        <tr><td colspan="2" valign="top">&nbsp;</td><td>&nbsp;</td><td valign="top">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="4">
+                                <table>
+                                    <tr>
+                                        <td width="100" align="center"><img src="/static/admin_ass/Images/mime.gif" /></td>
+                                        <td valign="bottom"><h3 style="letter-spacing:1px;">在调整本页之前，请先确定您已经上传了数据源，如果上传数据源标题行发生变化，请重新设置本页参数！</h3></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 一条线 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 添加栏目开始 -->
+
+
+                                        <!-- 商品分类开始 -->
+                                        <tr>
+                                            <td width="2%">&nbsp;</td>
+                                            <td width="96%">
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <form action="" method="">
+                                                                <table width="100%"  class="cont tr_color">
+                                                                    <tr>
+                                                                        <th>数据源标题列</th>
+                                                                        <th>是否展示</th>
+                                                                    </tr>
+                                                                    {{range $index, $elem := .excel}}
+                                                                    <tr align="center" class="d">
+                                                                        <td><p>{{$elem}}</p></td>
+                                                                        <td>
+                                                                            <input type="checkbox" name="is_hidden" id="c{{$index}}" value="1" onclick="addtitle({{$index}})"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                    {{end}}
+                                                                </table>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="2%">&nbsp;</td>
+                                        </tr>
+                                        <!-- 商品分类结束 -->
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="96%">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <form action="" method="">
+                                                <table width="100%" class="cont">
+                                                    <tr>
+                                                        <td width="2%">&nbsp;</td>
+                                                        <td>源Excel标题行：</td>
+                                                        <td width="30%"><input class="text" style="width:80%" type="text" name="cat_name" value="{{.excels.Exceltitle}}" readonly/></td>
+                                                        <td>导入数据的标题行，用于设置核心参数</td>
+                                                        <td width="2%">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="2%">&nbsp;</td>
+                                                        <td>当前展示的内容：</td>
+                                                        <td width="30%"><input class="text" style="width:80%" type="text" name="cat_name" value="{{.look}}" readonly/></td>
+                                                        <td>展示到用户中心的标题行(由您上次储存的下标转换成的标题)</td>
+                                                        <td width="2%">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="2%">&nbsp;</td>
+                                                        <td>要展示的内容：</td>
+                                                        <td width="30%"><input class="text" id="etitle" style="width:80%" type="text" name="cat_name" value="" readonly/></td>
+                                                        <td>展示到用户中心的标题行(下标储存，请点击上方选择自动加入)</td>
+                                                        <td width="2%">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>唯一不重复列：</td>
+                                                        <td>
+                                                            <select id="onlytitle">
+                                                                {{range $index, $elem := .excel}}
+                                                                    <option value="{{$index}}" {{if eq $index $.only}}selected{{end}}>{{$elem}}</option>
+                                                                {{end}}
+                                                            </select>
+                                                        </td>
+                                                        <td>（必须配置此处用户才可以正常登陆，请勿轻易修改此处！用作登陆）</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>选择登陆密码列：</td>
+                                                        <td>
+                                                            <select id="passwordtitle">
+                                                                {{range $index, $elem := .excel}}
+                                                                    <option value="{{$index}}" {{if eq $index $.pass}}selected{{end}}>{{$elem}}</option>
+                                                                {{end}}
+                                                            </select>
+                                                        </td>
+                                                        <td>（用于用户登陆验证，请勿轻易修改此处！）</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td colspan="3"><input class="btn" type="button" onclick="setdata()" value="提交" /></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                        </tr>
+                        <!-- 添加栏目结束 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="51%" class="left_txt">
+                                <img src="/static/admin_ass/Images/icon_mail.gif" width="16" height="11"> 服务邮箱：924417424@qq.com<br />
+                                <img src="/static/admin_ass/Images/icon_phone.gif" width="17" height="14"> 官方网站：<a href="http://wpa.qq.com/msgrd?v=3&uin=924417424&site=qq&menu=yes" target="_blank">觅</a>
+                            </td>
+                            <td>&nbsp;</td><td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+                <td background="/static/admin_ass/Images/mail_right_bg.gif">&nbsp;</td>
+            </tr>
+            <!-- 底部部分 -->
+            <tr>
+                <td valign="bottom" background="/static/admin_ass/Images/mail_left_bg.gif">
+                    <img src="/static/admin_ass/Images/buttom_left.gif" width="17" height="17" />
+                </td>
+                <td background="/static/admin_ass/Images/buttom_bgs.gif">
+                    <img src="/static/admin_ass/Images/buttom_bgs.gif" width="17" height="17">
+                </td>
+                <td valign="bottom" background="/static/admin_ass/Images/mail_right_bg.gif">
+                    <img src="/static/admin_ass/Images/buttom_right.gif" width="16" height="17" />
+                </td>           
+            </tr>
+        </table>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/jquery.cookie.min.js"></script>
+        <script src="/static/js/Base64.js"></script>
+        <script src="/static/js/login.js"></script>
+    </body>
+</html>

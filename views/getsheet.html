@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Excel</title>
+</head>
+<body>
+{{range $index, $elem := .sheets}}
+	<a href="/getrow/{{$index}}"><button>{{$elem}}</button></a>
+{{end}}
+</body>
+</html>

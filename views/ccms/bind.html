@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/admin_ass/Style/skin.css" />
+</head>
+    <body>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <!-- 头部开始 -->
+            <tr>
+                <td width="17" valign="top" background="/static/admin_ass/Images/mail_left_bg.gif">
+                    <img src="/static/admin_ass/Images/left_top_right.gif" width="17" height="29" />
+                </td>
+                <td valign="top" background="/static/admin_ass/Images/content_bg.gif">
+                    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="/static/admin_ass/Images/content_bg.gif">
+                        <tr>
+                            <td height="31" width="85">
+                                <ul>
+                                    <li class="title">绑定查看</li>
+                                <ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="16" valign="top" background="/static/admin_ass/Images/mail_right_bg.gif"><img src="/static/admin_ass/Images/nav_right_bg.gif" width="16" height="29" /></td>
+            </tr>
+            <!-- 中间部分开始 -->
+            <tr>
+                <!--第一行左边框-->
+                <td valign="middle" background="/static/admin_ass/Images/mail_left_bg.gif">&nbsp;</td>
+                <!--第一行中间内容-->
+                <td valign="top" bgcolor="#F7F8F9">
+                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <!-- 空白行-->
+                        <tr><td colspan="2" valign="top">&nbsp;</td><td>&nbsp;</td><td valign="top">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="4">
+                                <table>
+                                    <tr>
+                                        <td width="100" align="center"><img src="/static/admin_ass/Images/mime.gif" /></td>
+                                        <td valign="bottom"><h3 style="letter-spacing:1px;"><p id="msg">因为考虑到数据加解密的耗时问题，所以此页面采用唯一字段检索的方式查看数据！</p></h3></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 一条线 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 添加栏目开始 -->
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="96%">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <form action="" method="">
+                                                <table width="100%" class="cont">
+                                                 {{if .only}}
+                                                    <tr>
+                                                        <td width="2%">&nbsp;</td>
+                                                        <td width="10%">{{.only}}：</td>
+                                                        <td width="20%"><input class="text" type="text" id="select" name="cat_name" value="" /></td>
+                                                        <td>输入您设置的唯一不重复列中的值进行检索</td>
+                                                        <td width="2%">&nbsp;</td>
+                                                    </tr>
+                                                  {{else}}
+                                                     <tr>
+                                                         <td width="2%">&nbsp;</td>
+                                                         <td width="50%">唯一不重复字段未设置！请先打开  =》数据管理=》数据配置  进行设置</td>
+                                                         <td width="0%"><input class="text" type="text" id="select" name="cat_name" value="" readonly/></td>
+                                                         <td>输入您设置的唯一不重复列中的值进行检索</td>
+                                                         <td width="0%">&nbsp;</td>
+                                                     </tr>
+                                                  {{end}}
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td width="50%" colspan="3"><input class="btn" type="button" value="提交" onclick="getbind()"/>  <button onclick="cbind()">清理全部绑定关系</button></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                        </tr>
+                        <!-- 添加栏目结束 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="51%" class="left_txt">
+                                <img src="/static/admin_ass/Images/icon_mail.gif" width="16" height="11"> 服务邮箱：924417424@qq.com<br />
+                                <img src="/static/admin_ass/Images/icon_phone.gif" width="17" height="14"> 官方网站：<a href="http://wpa.qq.com/msgrd?v=3&uin=924417424&site=qq&menu=yes" target="_blank">觅</a>
+                            </td>
+                            <td>&nbsp;</td><td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+                <td background="/static/admin_ass/Images/mail_right_bg.gif">&nbsp;</td>
+            </tr>
+            <!-- 底部部分 -->
+            <tr>
+                <td valign="bottom" background="/static/admin_ass/Images/mail_left_bg.gif">
+                    <img src="/static/admin_ass/Images/buttom_left.gif" width="17" height="17" />
+                </td>
+                <td background="/static/admin_ass/Images/buttom_bgs.gif">
+                    <img src="/static/admin_ass/Images/buttom_bgs.gif" width="17" height="17">
+                </td>
+                <td valign="bottom" background="/static/admin_ass/Images/mail_right_bg.gif">
+                    <img src="/static/admin_ass/Images/buttom_right.gif" width="16" height="17" />
+                </td>           
+            </tr>
+        </table>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/jquery.cookie.min.js"></script>
+        <script src="/static/js/Base64.js"></script>
+        <script src="/static/js/login.js"></script>
+    </body>
+</html>

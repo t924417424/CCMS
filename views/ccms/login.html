@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <title>{{.website}} - 网站后台管理中心</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="{{.website}}" />
+    <meta name="keywords" content="{{.website}}" />
+    <meta name="Author" content="觅" />
+    <meta name="CopyRight" content="{{.website}}" />
+    <link rel="stylesheet" type="text/css" href="/static/admin_ass/Style/skin.css" />
+    <style type="text/css">
+        .expa{ width:120px; height:80px; border:1px solid #F00}
+    </style>
+</head>
+    <body>
+        <table width="100%">
+            <!-- 顶部部分 -->
+            <tr height="41"><td colspan="2" background="/static/admin_ass/Images/login_top_bg.gif">&nbsp;</td></tr>
+            <!-- 主体部分 -->
+            <tr style="background:url(/static/admin_ass/Images/login_bg.jpg) repeat-x;" height="532">
+                <!-- 主体左部分 -->
+                <td id="left_cont">
+                    <table width="100%" height="100%">
+                        <tr height="155"><td colspan="2">&nbsp;</td></tr>
+                        <tr>
+                            <td width="20%" rowspan="2">&nbsp;</td>
+                            <td width="60%">
+                                <table width="100%">
+                                    <tr height="70"><td align="right"><img src="/static/admin_ass/Images/logo.gif" title="{{.website}}" alt="{{.website}}" /></td></tr>
+                                    <tr height="274">
+                                        <td valign="top" align="right">
+                                            <ul>
+                                                <li>1- CCMS开放数据查询系统...</li>
+                                                <li>2- 一站通式的整合方式，方便用户使用...</li>
+                                                <li>3- 强大的后台系统，管理内容易如反掌...</li>
+                                                <li><img src="/static/admin_ass/Images/icon_demo.gif" />&nbsp;<a href="javascript:void(0)">使用说明</a>&nbsp;&nbsp;<span> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=924417424&site=qq&menu=yes" onfocus="this.blur()"><img border="0" src="http://wpa.qq.com/pa?p=2:609307843:41" alt="瑞曼为您服务" title="瑞曼科技"></a> </span></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <td width="15%" rowspan="2">&nbsp;</td>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                    </table>
+                </td>
+                <!-- 主体右部分 -->
+                <td id="right_cont">
+                    <table height="100%">
+                        <tr height="30%"><td colspan="3">&nbsp;</td></tr>
+                        <tr>
+                            <td width="30%" rowspan="5">&nbsp;</td>
+                            <td valign="top" id="form">
+                                <form action="" method="">
+                                    <table valign="top" width="50%">
+                                        <tr><td colspan="2"><h4 style="letter-spacing:1px;font-size:16px;">{{.website}} - 网站管理后台</h4></td><td><p id="msg"></p></td></tr>
+                                        <tr><td>管理员：</td><td><input type="text" id="username" value="" /></td></tr>
+                                        <tr><td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td><td><input type="password" id="password" value="" /></td></tr>
+                                        <tr><td>验证码：</td><td><input type="text" id="captcha" name="captcha" value="" style="width:80px;"/></td><td>{{create_captcha}}</td></tr>
+                                        <tr class="bt" align="center"><td>&nbsp;<input type="button" id="submit" value="登陆" onclick="adminlogin()"/></td><td>&nbsp;<input type="reset" value="重填" /></td></tr>
+                                    </table>
+                                </form>
+                            </td>
+                            <td rowspan="5">&nbsp;</td>
+                        </tr>
+                        <tr><td colspan="3">&nbsp;</td></tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- 底部部分 -->
+            <tr id="login_bot"><td colspan="2"><p>Copyright © 2018-2019 OldCat 老猫</p></td></tr>
+        </table>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/jquery.cookie.min.js"></script>
+        <script src="/static/js/Base64.js"></script>
+        <script src="/static/js/login.js"></script>
+    </body>
+</html>
