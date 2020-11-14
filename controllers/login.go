@@ -120,26 +120,28 @@ func (c *Login) Post(){
 				//此处检查登陆成功逻辑
 				if password == pasjc{
 					max := len(titledata) - 1
-					var looktitles string
-					var lookdatas string
-					datas := make(map[string]string)
+					//var looktitles string
+					//var lookdatas string
+					//datas := make(map[string]string)
 					//fmt.Println("行数：",userbind.Line)
+					var s string
 					if looktitle != ""{
 						look := strings.Split(looktitle, ",")
 						for _,v := range look{
 							iv,_ := strconv.Atoi(v)
 							if iv <= max{
-								looktitles = looktitles + " " + titledata[iv].Value
-								lookdatas = lookdatas + " " + userdata[iv].Value
-								datas[titledata[iv].Value] = userdata[iv].Value
+								//looktitles = looktitles + " " + titledata[iv].Value
+								//lookdatas = lookdatas + " " + userdata[iv].Value
+								//datas[titledata[iv].Value] = userdata[iv].Value
+								s = s + fmt.Sprintf("\"%s\":\"%s\",",titledata[iv].Value,userdata[iv].Value)
 							}else{
 								//fmt.Println("下标越界")
 							}
 						}
 					}
 					//fmt.Println(datas)
-					mjson,_ :=json.Marshal(datas)
-					mString :=string(mjson)
+					//mjson,_ :=json.Marshal(datas)
+					mString := fmt.Sprintf("{%s}",s[:len(s) - 1])
 					fmt.Println("对应JSON：",mString)
 					jsonre.Code = 200
 					jsonre.Msg = "登陆成功，请稍等。。。"
